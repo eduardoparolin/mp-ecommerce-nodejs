@@ -8,7 +8,7 @@ app.use(bodyParser.json({ type: 'application/*+json' }))
 
 const {MercadoPagoConfig, Preference} = require('mercadopago');
 // Adicione as credenciais
-const client = new MercadoPagoConfig({ accessToken: 'APP_USR-2453313229452572-092911-2df2d24eb035a4c0852f3455a89d1459-1160953381', options: {integratorId: 'dev_24c65fb163bf11ea96500242ac130004'} });
+const client = new MercadoPagoConfig({ accessToken: 'TEST-2453313229452572-092911-e2a5b87ac71ba0c577c887a3ee599639-1160953381', options: {integratorId: 'dev_24c65fb163bf11ea96500242ac130004'} });
 
 const preference = new Preference(client);
 
