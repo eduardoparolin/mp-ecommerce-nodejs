@@ -3,6 +3,8 @@ var exphbs  = require('express-handlebars');
 var port = process.env.PORT || 3000
 
 var app = express();
+var bodyParser = require('body-parser');
+app.use(bodyParser.json({ type: 'application/*+json' }))
 
 const {MercadoPagoConfig, Preference} = require('mercadopago');
 // Adicione as credenciais
@@ -49,6 +51,10 @@ app.get('/payment_error', function (req, res) {
     console.log(8, req.query);
     res.render('payment_error', req.query);
 });
+app.post('/webhook', function (req, res) {
+    console.log('WEBHOOK', req.body);
+    res.end();
+});
 
 app.get('/modal', function (req, res) {
     res.render('modal', req.query);
@@ -75,6 +81,7 @@ app.get('/detail', async function (req, res) {
                 installments: 6,
                 excluded_payment_methods: [{id: 'visa'}]
             },
+            notification_url: 'https://eduardoparolin-mp-commerce-nod-37790299e5e6.herokuapp.com/webhook',
             back_urls: {
                 success: 'https://eduardoparolin-mp-commerce-nod-37790299e5e6.herokuapp.com/payment_successful',
                 pending: 'https://eduardoparolin-mp-commerce-nod-37790299e5e6.herokuapp.com/payment_pending',
