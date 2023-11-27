@@ -1,4 +1,5 @@
 
+
 <div class="as-search-wrapper" role="main">
     <div class="as-navtuck-wrapper">
         <div class="as-l-fullwidth  as-navtuck" data-events="event52">
@@ -84,7 +85,50 @@
                                     {{ unit }}
                                 </h3>
                             </div>
-                            <button type="submit" class="mercadopago-button" formmethod="post">Pagar</button>
+                            <button id="btn" type="button" class="mercadopago-button" data-toggle="modal" data-target="#mymodal">Pagar a compra</button>
+<!--                            <a data-toggle="modal" data-target="#mymodal" >click me !</a>-->
+                            <!-- modal -->
+
+                            <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="mymodallabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" style="height:1000px !important;">
+                                    <div class="modal-content" style="height: 80%">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <iframe src="{{init_point}}" width="100%" height="100%" frameborder="0"></iframe>
+                                        </div>
+<!--                                        <div class="modal-footer">-->
+<!--                                            <button type="button" class="btn btn-default" data-dismiss="modal">close</button>-->
+<!--                                            <button type="button" class="btn btn-primary">save changes</button>-->
+<!--                                        </div>-->
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+                            <!-- /.modal -->
+<!--                            <script>-->
+<!--                                const btn = document.getElementById("btn");-->
+<!--                                btn.addEventListener('click', () => {-->
+<!--                                    fetch('https://api.mercadopago.com/checkout/preferences', {-->
+<!--                                        method: 'POST',-->
+<!--                                        headers: {-->
+<!--                                            'Content-Type': 'application/json',-->
+<!--                                            'Authorization': 'Bearer TEST-2888701758068433-052215-f7dd716fb78cb4c78c7ddd607a4638f6__LA_LB__-101097557'-->
+<!--                                        },-->
+<!--                                        body: JSON.stringify({-->
+<!--                                            title: {{title}},-->
+<!--                                            price: {{price}},-->
+<!--                                            unit: {{unit}}-->
+<!--                                        })-->
+<!--                                    }).then(res => res.json())-->
+<!--                                        .then(data => {-->
+<!--                                            console.log(data);-->
+<!--                                        })-->
+<!--                                        .catch(err => console.log(err));-->
+<!--                                });-->
+<!--                            </script>-->
                         </div>
                     </div>
                 </div>
@@ -92,4 +136,3 @@
         </div>
     </div>
 </div>
-   
