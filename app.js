@@ -4,22 +4,13 @@ var port = process.env.PORT || 3000
 
 var app = express();
 
-const {MercadoPagoConfig, Preference} = require('MercadoPago');
-const {Identification, Address} = require("mercadopago/dist/clients/commonTypes");
-const {Phone} = require("mercadopago/dist/clients/preference/commonTypes");
+const {MercadoPagoConfig, Preference} = require('mercadopago');
 // Adicione as credenciais
 const client = new MercadoPagoConfig({ accessToken: 'TEST-2453313229452572-092911-e2a5b87ac71ba0c577c887a3ee599639-1160953381', options: {integratorId: 'dev_24c65fb163bf11ea96500242ac130004'} });
 
 const preference = new Preference(client);
 
-
-
 const payer = {
-// ★ Nome e sobrenome: Lalo Landa
-// ★ Email: test_user_33467020@testuser.com (para este exercício, você deve usar este email)
-// ★ Telefone: (insira um número de telefone válido em seu país. Ex: 11 12345-6789)
-// ★ Endereço: Rua Falsa 123
-// ★ CEP: (Insira um CEP do seu país)
     name: 'Lalo',
     surname: 'Landa',
     email: 'test_user_33467020@testuser.com',
@@ -42,21 +33,12 @@ app.use(express.static('assets'));
 app.use('/assets', express.static(__dirname + '/assets'));
 
 app.get('/', function (req, res) {
+    console.log('aaaa');
     res.render('home');
 });
 
 app.get('/payment_successful', function (req, res) {
     console.log(6, req.query);
-    // {
-    //     collection_id: '12345',
-    //      collection_status: 'approved',
-    //     external_reference: 'ref',
-    //     payment_type: 'credit_card',
-    //     preference_id: 'preferenceid',
-    //     site_id: 'site_id',
-    //     processing_mode: 'aggregator',
-    //     merchant_account_id: 'null'
-    // }
     res.render('payment_successful', req.query);
 });
 app.get('/payment_pending', function (req, res) {
