@@ -81,7 +81,7 @@ app.get('/detail', async function (req, res) {
                 installments: 6,
                 excluded_payment_methods: [{id: 'visa'}]
             },
-            auto_return: 'approved',
+            // auto_return: 'approved',
             notification_url: 'https://eduardoparolin-mp-commerce-nod-37790299e5e6.herokuapp.com/webhook',
             back_urls: {
                 success: 'https://eduardoparolin-mp-commerce-nod-37790299e5e6.herokuapp.com/payment_successful',
