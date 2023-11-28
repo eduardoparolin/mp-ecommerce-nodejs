@@ -8,7 +8,7 @@ app.use(bodyParser.json({ type: 'application/*+json' }))
 
 const {MercadoPagoConfig, Preference} = require('mercadopago');
 // Adicione as credenciais
-const client = new MercadoPagoConfig({ accessToken: 'TEST-2453313229452572-092911-e2a5b87ac71ba0c577c887a3ee599639-1160953381', options: {integratorId: 'dev_24c65fb163bf11ea96500242ac130004'} });
+const client = new MercadoPagoConfig({ accessToken: 'APP_USR-2453313229452572-092911-2df2d24eb035a4c0852f3455a89d1459-1160953381', options: {integratorId: 'dev_24c65fb163bf11ea96500242ac130004'} });
 
 const preference = new Preference(client);
 
@@ -75,8 +75,8 @@ app.get('/detail', async function (req, res) {
                     currency_id: 'BRL'
                 }
             ],
-            payer: payer,
-            external_reference: 'test_user_33467020@testuser.com',
+            // payer: payer,
+            external_reference: 'eduparolins@gmail.com',
             payment_methods: {
                 installments: 6,
                 excluded_payment_methods: [{id: 'visa'}]
@@ -91,6 +91,7 @@ app.get('/detail', async function (req, res) {
     }).then((data) => {
         console.log(1, data);
         req.query.init_point = data.init_point;
+        req.query.preference_id = data.id;
     }).catch((error) => {
         console.log(2, error);
     });
