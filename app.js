@@ -4,7 +4,8 @@ var port = process.env.PORT || 3000
 
 var app = express();
 var bodyParser = require('body-parser');
-app.use(bodyParser.json({ type: 'application/*+json' }))
+var jsonParser = bodyParser.json()
+app.use(jsonParser);
 
 const {MercadoPagoConfig, Preference} = require('mercadopago');
 // Adicione as credenciais
