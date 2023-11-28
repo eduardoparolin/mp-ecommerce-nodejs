@@ -76,7 +76,7 @@ app.get('/detail', async function (req, res) {
                     currency_id: 'BRL'
                 }
             ],
-            // payer: payer,
+            payer: payer,
             external_reference: 'eduparolins@gmail.com',
             payment_methods: {
                 installments: 6,
